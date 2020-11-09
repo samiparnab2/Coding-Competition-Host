@@ -9,9 +9,14 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-from File import FileEncrytion
+from FileHandle import FileEncrytion
+from datetime import datetime
+class CompetitionWindow(object):
+    def __init__(self,path,compName,userId):
+        self.compName=compName
+        self.userId=userId
+        self.path=path
 
-class ExamWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(986, 589)
@@ -30,10 +35,10 @@ class ExamWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.exam_name_text = QtWidgets.QLabel(self.widget)
-        self.exam_name_text.setStyleSheet("font: 12pt \"Droid Sans Fallback\";\ncolor:rgb(255, 255, 255);")
-        self.exam_name_text.setObjectName("exam_name_text")
-        self.horizontalLayout_3.addWidget(self.exam_name_text)
+        self.comp_name_text = QtWidgets.QLabel(self.widget)
+        self.comp_name_text.setStyleSheet("font: 12pt \"Droid Sans Fallback\";\ncolor:rgb(255, 255, 255);")
+        self.comp_name_text.setObjectName("exam_name_text")
+        self.horizontalLayout_3.addWidget(self.comp_name_text)
         self.time_text = QtWidgets.QLabel(self.widget)
         self.time_text.setStyleSheet("font: 12pt \"Droid Sans Fallback\";\n""color:rgb(255, 255, 255);")
         self.time_text.setAlignment(QtCore.Qt.AlignCenter)
@@ -121,15 +126,6 @@ class ExamWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.exam_name_text.setText(_translate("MainWindow", "Exam Name"))
-        self.time_text.setText(_translate("MainWindow", "00:01:45"))
-        self.userid_text.setText(_translate("MainWindow", "userid@abc.com"))
-        self.language_choose.setCurrentText(_translate("MainWindow", "c"))
-        self.language_choose.setItemText(0, _translate("MainWindow", "c"))
-        self.language_choose.setItemText(1, _translate("MainWindow", "c++"))
-        self.language_choose.setItemText(2, _translate("MainWindow", "java"))
-        self.language_choose.setItemText(3, _translate("MainWindow", "python"))
         self.program_text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -177,23 +173,37 @@ class ExamWindow(object):
 "<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;\"><span style=\" background-color:transparent;\">4 3 6</span></p></body></html>"))
         self.question_tab.setTabText(self.question_tab.indexOf(self.tab), _translate("MainWindow", "q1"))
         self.question_tab.setTabText(self.question_tab.indexOf(self.tab_2), _translate("MainWindow", "Question 1"))
+
+
+    def LoadSettings(self):
+        self.file=FileEncrytion()
+        self.file.LoadKey('competitions/'+self.compName+'/settings')
+        self.key=self.file.key
+        self.settings=self.file.LoadSettings('competitions/'+self.compName+'/settings')
+
+    def StartCompetition(self,mainWindow):
+        self.LoadSettings()
+        if self.settings['starting-time']!=None:##testing korte hbe
+            while datetime.now().time() < datetime.strptime(self.settings['starting-time'],'%H:%M:%S').time():
+                pass
+        self.setupUi(mainWindow)
+        self.comp_name_text.setText(self.compName)
+        self.time_text.setText(str(self.settings['duration']))###########need to be modified
+        self.userid_text.setText(self.userId)
+        self.language_choose.addItems(self.settings['languages'])
+
     def changeLanguage(self):
         self.program_text.setText(self.language_choose.currentText())
 
 
-
+import os
 if __name__ == "__main__":
-    file=FileEncrytion()
-    file.LoadKey('settings')
-    print(file.key)#########################
-    settings=file.LoadSettings('settings')
-    print(settings['startingTime'])#############################
-
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = QtWidgets.QMainWindow()
     mainWindow.showMaximized()
     #MainWindow.setWindowFlags( QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)#window button disable #always on top
-    ui = ExamWindow()
-    ui.setupUi(mainWindow)
+    
+    examUI = CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
+    examUI.StartCompetition(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())
