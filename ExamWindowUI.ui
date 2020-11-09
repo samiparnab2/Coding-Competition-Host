@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>986</width>
+    <height>589</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">	background-color: rgb(39, 44, 54);
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">	background-color: rgb(27, 29, 35);
+</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="exam_name_text">
+             <property name="styleSheet">
+              <string notr="true">font: 12pt &quot;Droid Sans Fallback&quot;;
+color:rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>Exam Name</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="time_text">
+             <property name="styleSheet">
+              <string notr="true">font: 12pt &quot;Droid Sans Fallback&quot;;
+color:rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>00:01:45</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="userid_text">
+             <property name="styleSheet">
+              <string notr="true">font: 12pt &quot;Droid Sans Fallback&quot;;
+color:rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>userid@abc.com</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="styleSheet">
+         <string notr="true">border:none;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QComboBox" name="language_choose">
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string/>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QComboBox{
+	background-color: rgb(27, 29, 35);
+	border-radius: 7px;
+	border: 2px solid rgb(27, 29, 35);
+	padding: 5px;
+	padding-left: 10px;
+	text-color: rgb(255,255,255);
+	color: rgb(255,255,255);
+}
+QComboBox:hover{
+	border: 2px solid rgb(64, 71, 88);
+}
+</string>
+               </property>
+               <property name="editable">
+                <bool>false</bool>
+               </property>
+               <property name="currentText">
+                <string>c</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>c</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>c++</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>java</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>python</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="program_text">
+               <property name="styleSheet">
+                <string notr="true">QTextEdit{
+	color:rgb(255, 255, 255);
+	font: 12pt &quot;Droid Sans Fallback&quot;;
+	border: 2px solid rgb(64, 71, 88);
+}
+</string>
+               </property>
+               <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Droid Sans Fallback'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;xvxvxvx546475  uksgakjhj  jkjfgahfg kgafg&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QPushButton" name="run_button">
+                 <property name="maximumSize">
+                  <size>
+                   <width>150</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	font: 14pt &quot;Droid Sans Fallback&quot;;
+	background-position: center;
+	background-repeat: no-reperat;
+	border: 2px solid rgb(64, 71, 88);
+	border-radius:7px;
+	color:rgb(255, 255, 255);
+	background-color:rgb(0, 85, 255);
+}
+QPushButton:hover {
+	background-color: rgb(0, 67, 200);
+
+}
+QPushButton:pressed {	
+	background-color: rgb(0, 32, 97);
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Run</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="submit_button">
+                 <property name="maximumSize">
+                  <size>
+                   <width>150</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	font: 14pt &quot;Droid Sans Fallback&quot;;
+	background-position: center;
+	background-repeat: no-reperat;
+	border: 2px solid rgb(64, 71, 88);
+	border-radius:7px;
+	color:rgb(255, 255, 255);
+	background-color:rgb(0, 85, 255);
+}
+QPushButton:hover {
+	background-color: rgb(0, 67, 200);
+
+}
+QPushButton:pressed {	
+	background-color: rgb(0, 32, 97);
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Submit</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QTabWidget" name="question_tab">
+             <property name="styleSheet">
+              <string notr="true">color:rgb(255, 255, 255);
+	font: 9pt &quot;Droid Sans Fallback&quot;;
+	border: none;</string>
+             </property>
+             <property name="tabShape">
+              <enum>QTabWidget::Rounded</enum>
+             </property>
+             <property name="currentIndex">
+              <number>1</number>
+             </property>
+             <property name="documentMode">
+              <bool>false</bool>
+             </property>
+             <property name="tabsClosable">
+              <bool>false</bool>
+             </property>
+             <property name="movable">
+              <bool>true</bool>
+             </property>
+             <property name="tabBarAutoHide">
+              <bool>false</bool>
+             </property>
+             <widget class="QWidget" name="tab">
+              <attribute name="icon">
+               <iconset>
+                <normaloff>:/newPrefix/cil-check.png</normaloff>:/newPrefix/cil-check.png</iconset>
+              </attribute>
+              <attribute name="title">
+               <string>q1</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout">
+               <item row="0" column="0">
+                <widget class="QTextBrowser" name="text_browser">
+                 <property name="styleSheet">
+                  <string notr="true">QTextBrowser{
+	color:rgb(255, 255, 255);
+	font: 12pt &quot;Droid Sans Fallback&quot;;
+	
+}
+</string>
+                 </property>
+                 <property name="html">
+                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Droid Sans Fallback'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;You are given a tree with N nodes (numbered 1 through N). A tree is a connected undirected graph without cycles.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;You have to assign an integer to each node; for each valid i, let's denote the integer assigned to node i by Ai. This assignment must satisfy the following conditions:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;For each valid i, 1≤Ai≤105.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;For each simple path in the tree which contains at least two nodes, let's denote the set of nodes in this path by S. Then, ∑v∈SAv is not divisible by |S|.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;Input&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;The first line of each test case contains a single integer N.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;Each of the next N−1 lines contains two space-separated integers u and v denoting that nodes u and v are connected by an edge.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;Output&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;For each test case, print a single line containing N space-separated integers A1,A2,…,AN.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;If there are multiple solutions, you may find any one of them. It can be proved that a solution always exists under the given constraints.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;Constraints&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;1≤T≤200&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;2≤N≤100&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;1≤u,v≤N&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;Example Input&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;7&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;1 2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;4 6&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;3 5&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;1 4&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;7 5&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;5 1&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;1 2xxx1212dd have &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;2 3&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;Example Output&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;4 9 12 1 9 8 4&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; background-color:transparent;&quot;&gt;&lt;span style=&quot; background-color:transparent;&quot;&gt;4 3 6&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_2">
+              <attribute name="icon">
+               <iconset>
+                <normaloff>:/newPrefix/cil-check.png</normaloff>:/newPrefix/cil-check.png</iconset>
+              </attribute>
+              <attribute name="title">
+               <string>Question 1</string>
+              </attribute>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resource/icon_res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
