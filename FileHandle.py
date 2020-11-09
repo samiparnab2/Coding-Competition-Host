@@ -2,8 +2,7 @@ from cryptography.fernet import Fernet
 import json
 
 class FileEncrytion:
-    ONLY_SETTINGS=1
-    KEY_AND_SETTINGS=2
+    
     def CreateKey(self):
         self.key=Fernet.generate_key()
         self.fernet=Fernet(self.key)
