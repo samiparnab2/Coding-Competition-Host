@@ -265,8 +265,8 @@ class LoginWindow(QtWidgets.QMainWindow):
     def AdminLogin(self):
         pass
     def UserLogin(self):
-        self.competitionUI=CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
         self.close()
+        self.competitionUI=CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
         
         
 
