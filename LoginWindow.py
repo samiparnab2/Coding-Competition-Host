@@ -1,15 +1,19 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-import CompetitionWindow
 import os,sys
-class LoginWindow(object):
-    def SetupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(949, 451)
-        MainWindow.setStyleSheet("background-color: rgb(39, 44, 54);\n"
+from typing import Set
+from PyQt5 import QtCore, QtGui, QtWidgets
+from CompetitionWindow import CompetitionWindow
+class LoginWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.SetupUi()
+
+    def SetupUi(self):
+        self.setWindowTitle("Coding-Host(Log In)")
+        self.resize(949, 451)
+        self.setStyleSheet("background-color: rgb(39, 44, 54);\n"
 "color:rgb(255, 255, 255)")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.parentMainWindow=MainWindow
+        self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -237,13 +241,13 @@ class LoginWindow(object):
         self.verticalLayout_7.addWidget(self.frame_3)
         self.horizontalLayout.addLayout(self.verticalLayout_7)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.setCentralWidget(self.centralwidget)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
+        self.show()
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_13.setText(_translate("MainWindow", "Admin Login"))
         self.label_14.setText(_translate("MainWindow", "Admin ID"))
         self.adminid_text.setPlaceholderText(_translate("MainWindow", "Enter Admin ID"))
@@ -261,19 +265,12 @@ class LoginWindow(object):
     def AdminLogin(self):
         pass
     def UserLogin(self):
-        '''
-        self.parentMainWindow.setWindowFlags( QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)#window button disable #always on top
-        compUI = CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
-        compUI.StartCompetition(self.parentMainWindow)
-        self.parentMainWindow.show()
-        self.parentMainWindow.showMaximized()
+        self.competitionUI=CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
+        self.close()
         
-        '''
+        
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    loginUI = LoginWindow()
-    loginUI.SetupUi(MainWindow)
-    MainWindow.show()
+    loginUI=LoginWindow()
     sys.exit(app.exec_())

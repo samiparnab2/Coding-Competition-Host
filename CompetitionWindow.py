@@ -2,17 +2,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys,os
 from FileHandle import FileEncrytion
 import datetime
-class CompetitionWindow(object):
+class CompetitionWindow(QtWidgets.QMainWindow):
     def __init__(self,path,compName,userId):
+        super().__init__()
         self.compName=compName
         self.userId=userId
         self.path=path
+        self.StartCompetition()
 
-    def SetupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(986, 589)
-        MainWindow.setStyleSheet("background-color: rgb(39, 44, 54);\n")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def SetupUi(self):
+        self.setWindowTitle("Coding-Host(Competition Window)")
+        self.resize(986, 589)
+        self.setStyleSheet("background-color: rgb(39, 44, 54);\n")
+        self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.timer=QtCore.QTimer()
         self.timer.timeout.connect(self.UpdateTime)
@@ -111,13 +113,15 @@ class CompetitionWindow(object):
         self.gridLayout_3.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
         self.verticalLayout_2.addWidget(self.frame)
         self.gridLayout_5.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi()
         self.question_tab.setCurrentIndex(1)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(self)
+        self.show()
+        self.showMaximized()
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.program_text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -173,21 +177,20 @@ class CompetitionWindow(object):
         self.key=self.file.key
         self.settings=self.file.LoadSettings('competitions/'+self.compName+'/settings')
 
-    def StartCompetition(self,mainWindow):
+    def StartCompetition(self):
         self.LoadSettings()
-        self.parentMainWindow=mainWindow
         if self.settings['starting-time']!=None:##testing korte hbe
             while datetime.now().time() < datetime.strptime(self.settings['starting-time'],'%H:%M:%S').time():
                 pass
-        self.SetupUi(self.parentMainWindow)
+        self.SetupUi()
         self.comp_name_text.setText(self.compName)
-        self.time_text.setText(str(self.settings['duration']))###########need to be modified
+        #self.time_text.setText(str(self.settings['duration']))###########need to be modified
         self.userid_text.setText(self.userId)
         self.language_choose.addItems(self.settings['languages'])
         self.StartTimer()
 
     def EndCompetition(self):###############################closing window
-        self.parentMainWindow.close()
+        self.close()
 
     def StartTimer(self):
         self.remTime=datetime.timedelta(days=0, seconds=20, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
@@ -203,16 +206,3 @@ class CompetitionWindow(object):
 
     def changeLanguage(self):
         self.program_text.setText(self.language_choose.currentText())
-
-
-def run():
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    MainWindow.setWindowFlags( QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)#window button disable #always on top
-    compUI = CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
-    compUI.StartCompetition(MainWindow)
-    MainWindow.show()
-    MainWindow.showMaximized()
-    sys.exit(app.exec_())
-
-#run()
