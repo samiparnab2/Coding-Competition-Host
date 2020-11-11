@@ -1,6 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from CompetitionWindow import CompetitionWindow
+import CompetitionWindow
 import os,sys
 class LoginWindow(object):
     def SetupUi(self, MainWindow):
@@ -238,7 +238,6 @@ class LoginWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout_7)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -262,12 +261,14 @@ class LoginWindow(object):
     def AdminLogin(self):
         pass
     def UserLogin(self):
+        '''
         self.parentMainWindow.setWindowFlags( QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)#window button disable #always on top
         compUI = CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
         compUI.StartCompetition(self.parentMainWindow)
         self.parentMainWindow.show()
         self.parentMainWindow.showMaximized()
-
+        
+        '''
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

@@ -1,8 +1,7 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
+import sys,os
 from FileHandle import FileEncrytion
-from datetime import datetime
+import datetime
 class CompetitionWindow(object):
     def __init__(self,path,compName,userId):
         self.compName=compName
@@ -15,6 +14,8 @@ class CompetitionWindow(object):
         MainWindow.setStyleSheet("background-color: rgb(39, 44, 54);\n")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.timer=QtCore.QTimer()
+        self.timer.timeout.connect(self.UpdateTime)
         self.gridLayout_5 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
@@ -166,7 +167,6 @@ class CompetitionWindow(object):
         self.question_tab.setTabText(self.question_tab.indexOf(self.tab), _translate("MainWindow", "q1"))
         self.question_tab.setTabText(self.question_tab.indexOf(self.tab_2), _translate("MainWindow", "Question 1"))
 
-
     def LoadSettings(self):
         self.file=FileEncrytion()
         self.file.LoadKey('competitions/'+self.compName+'/settings')
@@ -184,6 +184,35 @@ class CompetitionWindow(object):
         self.time_text.setText(str(self.settings['duration']))###########need to be modified
         self.userid_text.setText(self.userId)
         self.language_choose.addItems(self.settings['languages'])
+        self.StartTimer()
+
+    def EndCompetition(self):###############################closing window
+        self.parentMainWindow.close()
+
+    def StartTimer(self):
+        self.remTime=datetime.timedelta(days=0, seconds=20, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+        #self.remTime=datetime.timedelta(days=0, seconds=self.settings['duration'][2], microseconds=0, milliseconds=0, minutes=self.settings['duration'][1], hours=self.settings['duration'][0], weeks=0)
+        self.timeout=datetime.timedelta(days=0, seconds=1, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+        self.timer.start(1000)
+    
+    def UpdateTime(self):
+        self.remTime-=self.timeout
+        self.time_text.setText(str(self.remTime))
+        if self.remTime.total_seconds()==0 :
+            self.EndCompetition()
 
     def changeLanguage(self):
         self.program_text.setText(self.language_choose.currentText())
+
+
+def run():
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    MainWindow.setWindowFlags( QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)#window button disable #always on top
+    compUI = CompetitionWindow(os.popen('pwd').read().strip(),'NewExam','user@123')
+    compUI.StartCompetition(MainWindow)
+    MainWindow.show()
+    MainWindow.showMaximized()
+    sys.exit(app.exec_())
+
+#run()
