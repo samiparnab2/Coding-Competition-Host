@@ -51,3 +51,12 @@ class FileEncrytion:
         f=open(path,'ab')
         f.write(self.fernet.encrypt(bytes(json.dumps(settings),'utf-8')))
         f.close()
+
+'''
+x={'date': [2020,11,12,2,24,0], 'duration': [1, 0, 0], 'languages': ['c', 'java', 'python'], 'no-of-questions': 2, 'correct-score': 10, 'incorrect-score': -2, 'total-score': 20}
+f=FileEncrytion()
+f.CreateKey()
+f.WriteKey('competitions/NewExam2/settings')
+f.WriteSettings('competitions/NewExam2/settings',x)
+
+'''

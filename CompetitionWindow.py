@@ -176,32 +176,42 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         self.file.LoadKey('competitions/'+self.compName+'/settings')
         self.key=self.file.key
         self.settings=self.file.LoadSettings('competitions/'+self.compName+'/settings')
-
+        
     def StartCompetition(self):
         self.LoadSettings()
-        if self.settings['starting-time']!=None:##testing korte hbe
-            while datetime.now().time() < datetime.strptime(self.settings['starting-time'],'%H:%M:%S').time():
+        if self.settings['date']!=None:
+            self.compDateTime=datetime.datetime(self.settings['date'][0],self.settings['date'][1],self.settings['date'][2],self.settings['date'][3],self.settings['date'][4],self.settings['date'][5])
+            today=datetime.datetime.now()
+            today=datetime.datetime(today.year,today.month,today.day,today.hour,today.minute,today.second)
+            #show waiting window            
+            while today<self.compDateTime:
                 pass
+                #close waiting window
         self.SetupUi()
         self.comp_name_text.setText(self.compName)
-        #self.time_text.setText(str(self.settings['duration']))###########need to be modified
         self.userid_text.setText(self.userId)
         self.language_choose.addItems(self.settings['languages'])
-        self.StartTimer()
+        if self.settings['date']==None:
+            self.StartTimer()
+        else:
+            self.StartTimer(today-self.compDateTime)
 
     def EndCompetition(self):###############################closing window
         self.close()
 
-    def StartTimer(self):
-        self.remTime=datetime.timedelta(days=0, seconds=20, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
-        #self.remTime=datetime.timedelta(days=0, seconds=self.settings['duration'][2], microseconds=0, milliseconds=0, minutes=self.settings['duration'][1], hours=self.settings['duration'][0], weeks=0)
+    def StartTimer(self,timeOver=None):###change timihng from settings
+        #self.remTime=datetime.timedelta(days=0, seconds=20, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+        self.remTime=datetime.timedelta(days=0, seconds=self.settings['duration'][2], microseconds=0, milliseconds=0, minutes=self.settings['duration'][1], hours=self.settings['duration'][0], weeks=0)
+        if timeOver!=None:
+            self.remTime-=timeOver
+        #self.remTime.microseconds=0
         self.timeout=datetime.timedelta(days=0, seconds=1, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
         self.timer.start(1000)
     
     def UpdateTime(self):
         self.remTime-=self.timeout
         self.time_text.setText(str(self.remTime))
-        if self.remTime.total_seconds()==0 :
+        if self.remTime.total_seconds()<=0 :
             self.EndCompetition()
 
     def changeLanguage(self):
