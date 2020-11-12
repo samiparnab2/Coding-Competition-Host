@@ -1,7 +1,8 @@
+from datetime import date
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys,os
 from FileHandle import FileEncrytion
-import datetime
+import datetime,threading
 class CompetitionWindow(QtWidgets.QMainWindow):
     def __init__(self,path,compName,userId):
         super().__init__()
@@ -181,10 +182,10 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         self.LoadSettings()
         if self.settings['date']!=None:
             self.compDateTime=datetime.datetime(self.settings['date'][0],self.settings['date'][1],self.settings['date'][2],self.settings['date'][3],self.settings['date'][4],self.settings['date'][5])
-            #show waiting window            
+            #show waiting window 
             while datetime.datetime.now()<self.compDateTime:
                 pass
-                #close waiting window
+            #close waiting window
         self.SetupUi()
         self.comp_name_text.setText(self.compName)
         self.userid_text.setText(self.userId)
@@ -194,7 +195,7 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         if self.settings['date']==None:
             self.StartTimer()
         else:
-            self.StartTimer(today-self.compDateTime)
+            self.StartTimer(today-self.compDateTime)   
 
     def EndCompetition(self):###############################closing window
         self.close()
