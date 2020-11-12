@@ -42,6 +42,7 @@ class FileEncrytion:
         data=f.read()
         f.close()
         return data
+
     def WriteKey(self,path):
         f=open(path,'wb')
         f.write(self.key)
@@ -53,10 +54,9 @@ class FileEncrytion:
         f.close()
 
 '''
-x={'date': [2020,11,12,2,24,0], 'duration': [1, 0, 0], 'languages': ['c', 'java', 'python'], 'no-of-questions': 2, 'correct-score': 10, 'incorrect-score': -2, 'total-score': 20}
+x={'date': [2020,11,13,3,19+1,0], 'duration': [1, 0, 0], 'languages': ['c', 'java', 'python'], 'no-of-questions': 2, 'correct-score': 10, 'incorrect-score': -2, 'total-score': 20}
 f=FileEncrytion()
 f.CreateKey()
 f.WriteKey('competitions/NewExam2/settings')
 f.WriteSettings('competitions/NewExam2/settings',x)
-
 '''

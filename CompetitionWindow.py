@@ -181,16 +181,16 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         self.LoadSettings()
         if self.settings['date']!=None:
             self.compDateTime=datetime.datetime(self.settings['date'][0],self.settings['date'][1],self.settings['date'][2],self.settings['date'][3],self.settings['date'][4],self.settings['date'][5])
-            today=datetime.datetime.now()
-            today=datetime.datetime(today.year,today.month,today.day,today.hour,today.minute,today.second)
             #show waiting window            
-            while today<self.compDateTime:
+            while datetime.datetime.now()<self.compDateTime:
                 pass
                 #close waiting window
         self.SetupUi()
         self.comp_name_text.setText(self.compName)
         self.userid_text.setText(self.userId)
         self.language_choose.addItems(self.settings['languages'])
+        today=datetime.datetime.now()
+        today=datetime.datetime(today.year,today.month,today.day,today.hour,today.minute,today.second)
         if self.settings['date']==None:
             self.StartTimer()
         else:
@@ -204,7 +204,6 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         self.remTime=datetime.timedelta(days=0, seconds=self.settings['duration'][2], microseconds=0, milliseconds=0, minutes=self.settings['duration'][1], hours=self.settings['duration'][0], weeks=0)
         if timeOver!=None:
             self.remTime-=timeOver
-        #self.remTime.microseconds=0
         self.timeout=datetime.timedelta(days=0, seconds=1, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
         self.timer.start(1000)
     
