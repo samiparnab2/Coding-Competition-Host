@@ -2,7 +2,7 @@
 import os,sys
 from typing import Set
 from PyQt5 import QtCore, QtGui, QtWidgets
-from CompetitionWindow import CompetitionWindow
+import CompetitionWindow
 class LoginWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -93,7 +93,7 @@ class LoginWindow(QtWidgets.QMainWindow):
 "")
         self.label_16.setText("")
         self.label_16.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_16.setObjectName("label_16")
+        self.label_16.setObjectName("admin_msg_text")
         self.horizontalLayout_12.addWidget(self.label_16)
         self.admin_login_button = QtWidgets.QPushButton(self.layoutWidget_6)
         self.admin_login_button.setMinimumSize(QtCore.QSize(100, 40))
@@ -214,7 +214,7 @@ class LoginWindow(QtWidgets.QMainWindow):
 "")
         self.label_12.setText("")
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_12.setObjectName("label_12")
+        self.label_12.setObjectName("user_msg_text")
         self.horizontalLayout_9.addWidget(self.label_12)
         self.user_login_button = QtWidgets.QPushButton(self.layoutWidget_4)
         self.user_login_button.setMinimumSize(QtCore.QSize(100, 40))
@@ -265,10 +265,25 @@ class LoginWindow(QtWidgets.QMainWindow):
     def AdminLogin(self):
         pass
     def UserLogin(self):
+        self.competitionUI=CompetitionWindow.CompetitionWindow(os.popen('pwd').read().strip(),'NewExam2','user@123')
+        self.settings=self.competitionUI.settings
+        if self.competitionUI.settings['date']!=None:
+                self.compDateTime=CompetitionWindow.datetime.datetime(self.settings['date'][0],self.settings['date'][1],self.settings['date'][2],self.settings['date'][3],self.settings['date'][4],self.settings['date'][5])
+                if CompetitionWindow.datetime.datetime.now()<self.compDateTime:
+                        self.timer=QtCore.QTimer()
+                        self.timer.timeout.connect(self.WaitingForComp)
+                        self.timer.start(300)
+                        self.label_12.setText("Event will start from\n"+str(self.compDateTime))
+                        return
         self.close()
-        self.competitionUI=CompetitionWindow(os.popen('pwd').read().strip(),'NewExam2','user@123')
-        
-        
+        self.competitionUI.StartCompetition()
+
+
+    def WaitingForComp(self):
+        if CompetitionWindow.datetime.datetime.now()>=self.compDateTime:
+                self.timer.stop()
+                self.close()
+                self.competitionUI.StartCompetition()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

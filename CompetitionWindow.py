@@ -9,7 +9,7 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         self.compName=compName
         self.userId=userId
         self.path=path
-        self.StartCompetition()
+        self.LoadSettings()
 
     def SetupUi(self):
         self.setWindowTitle("Coding-Host(Competition Window)")
@@ -119,8 +119,6 @@ class CompetitionWindow(QtWidgets.QMainWindow):
         self.retranslateUi()
         self.question_tab.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(self)
-        self.show()
-        self.showMaximized()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -183,29 +181,25 @@ class CompetitionWindow(QtWidgets.QMainWindow):
             exit()
         
     def StartCompetition(self):
-        self.LoadSettings()
         if self.settings['date']!=None:
             self.compDateTime=datetime.datetime(self.settings['date'][0],self.settings['date'][1],self.settings['date'][2],self.settings['date'][3],self.settings['date'][4],self.settings['date'][5])
-            #show waiting window 
-            while datetime.datetime.now()<self.compDateTime:
-                pass
-            #close waiting window
         self.SetupUi()
         self.comp_name_text.setText(self.compName)
         self.userid_text.setText(self.userId)
         self.language_choose.addItems(self.settings['languages'])
-        today=datetime.datetime.now()
-        today=datetime.datetime(today.year,today.month,today.day,today.hour,today.minute,today.second)
         if self.settings['date']==None:
             self.StartTimer()
         else:
-            self.StartTimer(today-self.compDateTime)   
+            today=datetime.datetime.now()
+            today=datetime.datetime(today.year,today.month,today.day,today.hour,today.minute,today.second)
+            self.StartTimer(today-self.compDateTime)  
+        self.show()
+        self.showMaximized() 
 
     def EndCompetition(self):###############################closing window
         self.close()
 
-    def StartTimer(self,timeOver=None):###change timihng from settings
-        #self.remTime=datetime.timedelta(days=0, seconds=20, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+    def StartTimer(self,timeOver=None):
         self.remTime=datetime.timedelta(days=0, seconds=self.settings['duration'][2], microseconds=0, milliseconds=0, minutes=self.settings['duration'][1], hours=self.settings['duration'][0], weeks=0)
         if timeOver!=None:
             self.remTime-=timeOver
@@ -220,3 +214,7 @@ class CompetitionWindow(QtWidgets.QMainWindow):
 
     def changeLanguage(self):
         self.program_text.setText(self.language_choose.currentText())
+
+
+
+
