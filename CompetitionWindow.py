@@ -174,9 +174,13 @@ class CompetitionWindow(QtWidgets.QMainWindow):
 
     def LoadSettings(self):
         self.file=FileEncrytion()
-        self.file.LoadKey('competitions/'+self.compName+'/settings')
-        self.key=self.file.key
-        self.settings=self.file.LoadSettings('competitions/'+self.compName+'/settings')
+        try:
+            self.file.LoadKey('competitions/'+self.compName+'/settings')
+            self.key=self.file.key
+            self.settings=self.file.LoadSettings('competitions/'+self.compName+'/settings')
+        except:
+            print("settings file can't be loaded")
+            exit()
         
     def StartCompetition(self):
         self.LoadSettings()
